@@ -1,0 +1,390 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Chicago', 'Courier New', monospace;
+    background: #6B6B6B url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23555555" stroke-width="0.5"/></pattern><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    color: #000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Стили окон - теперь адаптивные */
+.window {
+    background: #C0C0C0;
+    border: 2px solid;
+    border-top-color: #FFFFFF;
+    border-left-color: #FFFFFF;
+    border-right-color: #808080;
+    border-bottom-color: #808080;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    max-width: 95vw;
+    width: auto;
+    min-width: 300px;
+}
+
+.window-titlebar {
+    background: linear-gradient(to right, #000080, #1084D0);
+    color: white;
+    padding: 4px 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.title-controls {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.traffic-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.traffic-light.red { background: #FF5F57; }
+.traffic-light.yellow { background: #FEBC2E; }
+.traffic-light.green { background: #28C840; }
+
+.window-controls {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.window-control {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #000;
+    background: #C0C0C0;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.window-control.close:before {
+    content: "×";
+    position: absolute;
+    top: -3px;
+    left: 2px;
+    font-size: 14px;
+}
+
+.window-content {
+    padding: 16px;
+    overflow: auto;
+}
+
+/* Форма логина */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.mac-input {
+    padding: 4px 8px;
+    border: 2px inset #C0C0C0;
+    background: white;
+    font-family: 'Chicago', monospace;
+    width: 100%;
+}
+
+.mac-button {
+    background: #C0C0C0;
+    border: 2px outset #C0C0C0;
+    padding: 6px 12px;
+    font-family: 'Chicago', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%;
+}
+
+.mac-button:active {
+    border: 2px inset #C0C0C0;
+}
+
+/* Главный сайт */
+.hidden {
+    display: none !important;
+}
+
+#mainSite {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-bar {
+    background: #C0C0C0;
+    border-bottom: 2px solid #808080;
+    padding: 4px 8px;
+    display: flex;
+    gap: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.menu-item {
+    padding: 2px 8px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background: #000080;
+    color: white;
+}
+
+.content-area {
+    flex: 1;
+    padding: 20px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tab-content {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+}
+
+.tab-content.active {
+    display: flex;
+    justify-content: center;
+}
+
+/* Плеер изображений - адаптивный */
+#fileTab .window {
+    width: auto;
+    max-width: 90vw;
+}
+
+.image-viewer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.viewer-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    background: #C0C0C0;
+    border: 2px inset #C0C0C0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.image-container {
+    border: 4px inset #C0C0C0;
+    background: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.meme-image {
+    max-width: 100%;
+    max-height: 70vh;
+    height: auto;
+    width: auto;
+    display: block;
+    image-rendering: auto;
+}
+
+.image-counter {
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px;
+    background: #C0C0C0;
+    border: 2px inset #C0C0C0;
+    width: 100%;
+}
+
+/* Системный текст - адаптивные окна */
+.system-text {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.system-text h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+    color: #000080;
+    word-wrap: break-word;
+}
+
+.system-text ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* Адаптивные окна для других вкладок */
+#viewTab .window,
+#editTab .window,
+#specialTab .window {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Всплывающее окно */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: auto;
+    min-width: 300px;
+    max-width: 90vw;
+}
+
+.popup-message {
+    font-size: clamp(18px, 4vw, 24px);
+    font-weight: bold;
+    text-align: center;
+    color: #FF0000;
+    padding: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    word-wrap: break-word;
+}
+
+/* Медиа-запросы для мобильных устройств */
+@media (max-width: 768px) {
+    .content-area {
+        padding: 10px;
+    }
+    
+    .image-viewer {
+        gap: 10px;
+    }
+    
+    .image-container {
+        padding: 10px;
+        min-height: 200px;
+    }
+    
+    .viewer-controls {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .mac-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+    
+    .menu-bar {
+        gap: 10px;
+        font-size: 12px;
+        overflow-x: auto;
+        padding: 4px;
+    }
+    
+    .menu-item {
+        padding: 4px 8px;
+        flex-shrink: 0;
+    }
+    
+    .window-titlebar {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .window-title {
+        order: 2;
+        width: 100%;
+        text-align: center;
+        margin-top: 4px;
+    }
+    
+    .title-controls {
+        order: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .window-content {
+        padding: 10px;
+    }
+    
+    .image-container {
+        min-height: 150px;
+    }
+    
+    .meme-image {
+        max-height: 50vh;
+    }
+    
+    .system-text {
+        font-size: 12px;
+        padding: 5px;
+    }
+    
+    .system-text h2 {
+        font-size: 16px;
+    }
+    
+    .popup {
+        min-width: 250px;
+    }
+    
+    .popup-message {
+        font-size: 16px;
+        padding: 15px;
+    }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1920px) {
+    .image-viewer {
+        max-width: 1600px;
+    }
+    
+    .meme-image {
+        max-height: 80vh;
+    }
+}

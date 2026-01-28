@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macintosh OS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chicago&display=swap">
+</head>
+<body>
+    <!-- Окно авторизации -->
+    <div id="loginWindow" class="window">
+        <div class="window-titlebar">
+            <div class="window-title">Вход в систему</div>
+            <div class="window-controls">
+                <div class="window-control close"></div>
+                <div class="window-control minimize"></div>
+                <div class="window-control maximize"></div>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="login-form">
+                <div class="field-group">
+                    <label for="firstName">Имя:</label>
+                    <input type="text" id="firstName" class="mac-input" placeholder="Введите имя">
+                </div>
+                <div class="field-group">
+                    <label for="lastName">Фамилия:</label>
+                    <input type="text" id="lastName" class="mac-input" placeholder="Введите фамилию">
+                </div>
+                <button id="loginBtn" class="mac-button">Вход</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основной сайт (скрыт до авторизации) -->
+    <div id="mainSite" class="hidden">
+        <!-- Панель меню -->
+        <div class="menu-bar">
+            <div class="menu-item">File</div>
+            <div class="menu-item">View</div>
+            <div class="menu-item">Edit</div>
+            <div class="menu-item">Special</div>
+        </div>
+
+        <!-- Контент вкладок -->
+        <div class="content-area">
+            <!-- Вкладка File -->
+            <div id="fileTab" class="tab-content active">
+                <div class="window">
+                    <div class="window-titlebar">
+                        <div class="title-controls">
+                            <div class="traffic-light red" id="closeBtn"></div>
+                            <div class="traffic-light yellow" id="minimizeBtn"></div>
+                            <div class="traffic-light green" id="maximizeBtn"></div>
+                        </div>
+                        <div class="window-title">Image Viewer - <span id="currentImageNum">1</span>/32</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="image-viewer">
+                            <div class="viewer-controls">
+                                <button id="prevBtn" class="mac-button">&lt; Назад</button>
+                                <button id="nextBtn" class="mac-button">Вперед &gt;</button>
+                            </div>
+                            <div class="image-container">
+                                <img id="currentImage" src="" alt="Meme" class="meme-image">
+                            </div>
+                            <div class="image-counter">Изображение: <span id="counter">1</span> из 32</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка View -->
+            <div id="viewTab" class="tab-content">
+                <div class="window">
+                    <div class="window-titlebar">
+                        <div class="window-title">View Information</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="system-text">
+                            <h2>ИДИ В ЖОПУ</h2>
+                            <p>ГЛЕБ ХУЕСОС</p>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка Edit -->
+            <div id="editTab" class="tab-content">
+                <div class="window">
+                    <div class="window-titlebar">
+                        <div class="window-title">Edit Mode</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="system-text">
+                            <h2>ИДИ В ЖОПУ</h2>
+                            <p>ГЛЕБ УЕБИЩЕ</p>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка Special -->
+            <div id="specialTab" class="tab-content">
+                <div class="window">
+                    <div class="window-titlebar">
+                        <div class="window-title">Special Functions</div>
+                    </div>
+                    <div class="window-content">
+                        <div class="system-text">
+                            <h2>ИДИ В ПИЗДУ</h2>
+                            <p>ГЛЕБ ЧМИЩЕ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Всплывающее окно -->
+    <div id="popupWindow" class="window popup hidden">
+        <div class="window-titlebar">
+            <div class="window-title">System Message</div>
+            <div class="window-controls">
+                <div class="window-control close" id="popupClose"></div>
+            </div>
+        </div>
+        <div class="window-content">
+            <div class="popup-message" id="popupMessage">ПОШОЛ НАХУЙ</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
